@@ -6,12 +6,16 @@ Kelas: IF 02 - 01
 
 NIM: 1203220086
 
-## Soal
-1. Membuat sebuah program server yang dapat menerima koneksi dari klien menggunakan protokol TCP. Server ini akan menerima pesan dari klien dan mengirimkan pesan balasan berisi jumlah karakter pada pesan tersebut. Gunakan port 12345 untuk server. Membuat analisa dari hasil program tersebut 
+## Soal 1
+Membuat sebuah program server yang dapat menerima koneksi dari klien menggunakan protokol TCP. Server ini akan menerima pesan dari klien dan mengirimkan pesan balasan berisi jumlah karakter pada pesan tersebut. Gunakan port 12345 untuk server. Membuat analisa dari hasil program tersebut 
 
 **Source Code:**
 
-Bagian ini untuk menginisialisasi server menggunakan protokol TCP/IP. Pernyataan import socket mengimpor modul socket, yang menyediakan fungsi-fungsi untuk berkomunikasi melalui jaringan. Dengan menggunakan socket.socket(socket.AF_INET, socket.SOCK_STREAM), kita membuat objek socket yang menggunakan alamat IPv4 (socket.AF_INET) dan protokol TCP (socket.SOCK_STREAM). Langkah selanjutnya adalah mengikat socket ke alamat dan port tertentu menggunakan server_socket.bind(('localhost', 12345)). Di sini, localhost merujuk pada komputer tempat server berjalan dan 12345 adalah nomor port yang dipilih untuk server. Dengan server_socket.listen(5), server diinstruksikan untuk mendengarkan koneksi masuk. Argumen 5 menunjukkan bahwa server akan menerima hingga lima koneksi masuk yang tertunda. Pesan "Server telah siap menerima koneksi..." dicetak untuk memberi tahu operator server bahwa server telah dimulai dan siap menerima koneksi. Dengan langkah-langkah ini, server siap untuk menerima koneksi dari klien dan menanggapi pesan yang diterima.
+Bagian ini untuk menginisialisasi server menggunakan protokol TCP/IP. Pernyataan import socket mengimpor modul socket, yang menyediakan fungsi-fungsi untuk berkomunikasi melalui jaringan. Dengan menggunakan socket.socket(socket.AF_INET, socket.SOCK_STREAM), kita membuat objek socket yang menggunakan alamat IPv4 (socket.AF_INET) dan protokol TCP (socket.SOCK_STREAM). Langkah selanjutnya adalah mengikat socket ke alamat dan port tertentu menggunakan server_socket.bind(('localhost', 12345)).
+
+Di sini, localhost merujuk pada komputer tempat server berjalan dan 12345 adalah nomor port yang dipilih untuk server. Dengan server_socket.listen(5), server diinstruksikan untuk mendengarkan koneksi masuk. Argumen 5 menunjukkan bahwa server akan menerima hingga lima koneksi masuk yang tertunda. Pesan "Server telah siap menerima koneksi..." dicetak untuk memberi tahu operator server bahwa server telah dimulai dan siap menerima koneksi.
+
+Dengan langkah-langkah ini, server siap untuk menerima koneksi dari klien dan menanggapi pesan yang diterima.
 ```sh
 import socket
 
@@ -28,7 +32,11 @@ def main():
     print("Server telah siap menerima koneksi...")
 ```
 
-Bagian ini untuk menjalankan server dalam loop tak terbatas (while True). Setiap iterasi dari loop ini, server akan menunggu dan menerima koneksi dari klien yang ingin berkomunikasi. Ketika koneksi diterima, server akan mencetak pesan yang memberitahu bahwa koneksi berhasil dibuat dengan klien dan mencantumkan alamat IP dan nomor port klien. Setelah koneksi terbentuk, server akan menerima pesan dari klien menggunakan metode recv() dengan ukuran buffer 1024 byte. Pesan yang diterima akan di-decode dari format byte menjadi string dan kemudian dicetak untuk keperluan pemantauan dan debugging. Selanjutnya, server akan menghitung jumlah karakter dalam pesan yang diterima menggunakan fungsi len(). Setelah jumlah karakter pesan dihitung, server akan mengirimkan balasan kepada klien. Balasan ini berisi jumlah karakter pesan yang telah dihitung, yang dikonversi menjadi string, kemudian diencode menjadi format byte menggunakan metode encode() sebelum dikirimkan ke klien. Setelah server mengirim balasan, koneksi dengan klien ditutup menggunakan metode close() untuk membersihkan sumber daya dan membebaskan port untuk koneksi berikutnya. Proses ini akan berulang terus-menerus, memungkinkan server untuk terus menerima koneksi dan menanggapi pesan dari klien.
+Bagian ini untuk menjalankan server dalam loop tak terbatas (while True). Setiap iterasi dari loop ini, server akan menunggu dan menerima koneksi dari klien yang ingin berkomunikasi. Ketika koneksi diterima, server akan mencetak pesan yang memberitahu bahwa koneksi berhasil dibuat dengan klien dan mencantumkan alamat IP dan nomor port klien. Setelah koneksi terbentuk, server akan menerima pesan dari klien menggunakan metode recv() dengan ukuran buffer 1024 byte.
+
+Pesan yang diterima akan di-decode dari format byte menjadi string dan kemudian dicetak untuk keperluan pemantauan dan debugging. Selanjutnya, server akan menghitung jumlah karakter dalam pesan yang diterima menggunakan fungsi len(). Setelah jumlah karakter pesan dihitung, server akan mengirimkan balasan kepada klien. Balasan ini berisi jumlah karakter pesan yang telah dihitung, yang dikonversi menjadi string, kemudian diencode menjadi format byte menggunakan metode encode() sebelum dikirimkan ke klien. 
+
+Setelah server mengirim balasan, koneksi dengan klien ditutup menggunakan metode close() untuk membersihkan sumber daya dan membebaskan port untuk koneksi berikutnya. Proses ini akan berulang terus-menerus, memungkinkan server untuk terus menerima koneksi dan menanggapi pesan dari klien.
 ```sh
     while True:
         # Terima koneksi dari klien
@@ -58,11 +66,15 @@ Server
 Client
 ![reference image](/images/1.png)
 
-2. Membuat sebuah program klien yang dapat terhubung ke server yang telah dibuat pada soal nomor 1. Klien ini akan mengirimkan pesan ke server berupa inputan dari pengguna dan menampilkan pesan balasan jumlah karakter yang diterima dari server. Membuat analisa dari hasil program tersebut
+
+## Soal 2
+Membuat sebuah program klien yang dapat terhubung ke server yang telah dibuat pada soal nomor 1. Klien ini akan mengirimkan pesan ke server berupa inputan dari pengguna dan menampilkan pesan balasan jumlah karakter yang diterima dari server. Membuat analisa dari hasil program tersebut
 
 ** Source Code **
 
-Kode tersebut merupakan implementasi program klien dalam bahasa Python yang menggunakan modul socket untuk berkomunikasi dengan server menggunakan protokol TCP/IP. Program klien ini terhubung ke server yang berjalan pada alamat localhost dan port 12345. Pengguna diminta untuk memasukkan pesan yang akan dikirimkan ke server. Setelah pesan dimasukkan, klien mengirimkan pesan tersebut ke server menggunakan metode send() setelah diencode menjadi format byte menggunakan encode(). Selanjutnya, klien menerima balasan dari server menggunakan metode recv() dengan ukuran buffer 1024 byte, lalu dekode pesan yang diterima menjadi string menggunakan decode(). Balasan tersebut adalah jumlah karakter dari pesan yang telah dihitung oleh server. Klien kemudian mencetak jumlah karakter yang diterima dari server. Akhirnya, koneksi dengan server ditutup menggunakan close() untuk membersihkan sumber daya. Program klien ini memberikan interaksi antara pengguna dengan server yang sederhana, di mana pesan yang dikirimkan oleh pengguna akan dihitung jumlah karakternya oleh server, dan jumlah karakter tersebut akan ditampilkan kembali kepada pengguna.
+Kode tersebut merupakan implementasi program klien dalam bahasa Python yang menggunakan modul socket untuk berkomunikasi dengan server menggunakan protokol TCP/IP. Program klien ini terhubung ke server yang berjalan pada alamat localhost dan port 12345. Pengguna diminta untuk memasukkan pesan yang akan dikirimkan ke server. Setelah pesan dimasukkan, klien mengirimkan pesan tersebut ke server menggunakan metode send() setelah diencode menjadi format byte menggunakan encode().
+
+Selanjutnya, klien menerima balasan dari server menggunakan metode recv() dengan ukuran buffer 1024 byte, lalu dekode pesan yang diterima menjadi string menggunakan decode(). Balasan tersebut adalah jumlah karakter dari pesan yang telah dihitung oleh server. Klien kemudian mencetak jumlah karakter yang diterima dari server. Akhirnya, koneksi dengan server ditutup menggunakan close() untuk membersihkan sumber daya. Program klien ini memberikan interaksi antara pengguna dengan server yang sederhana, di mana pesan yang dikirimkan oleh pengguna akan dihitung jumlah karakternya oleh server, dan jumlah karakter tersebut akan ditampilkan kembali kepada pengguna.
 ```sh
 import socket
 
