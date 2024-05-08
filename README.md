@@ -8,10 +8,8 @@ NIM: 1203220086
 
 ## Soal
 1. Membuat sebuah program server yang dapat menerima koneksi dari klien menggunakan protokol TCP. Server ini akan menerima pesan dari klien dan mengirimkan pesan balasan berisi jumlah karakter pada pesan tersebut. Gunakan port 12345 untuk server. Membuat analisa dari hasil program tersebut 
-2. Membuat sebuah program klien yang dapat terhubung ke server yang telah dibuat pada soal nomor 1. Klien ini akan mengirimkan pesan ke server berupa inputan dari pengguna dan menampilkan pesan balasan jumlah karakter yang diterima dari server. Membuat analisa dari hasil program tersebut
-3. upload di github dan kumpulkan url repositorinya
 
-## Source Code
+**Source Code:**
 
 Bagian ini untuk menginisialisasi server menggunakan protokol TCP/IP. Pernyataan import socket mengimpor modul socket, yang menyediakan fungsi-fungsi untuk berkomunikasi melalui jaringan. Dengan menggunakan socket.socket(socket.AF_INET, socket.SOCK_STREAM), kita membuat objek socket yang menggunakan alamat IPv4 (socket.AF_INET) dan protokol TCP (socket.SOCK_STREAM). Langkah selanjutnya adalah mengikat socket ke alamat dan port tertentu menggunakan server_socket.bind(('localhost', 12345)). Di sini, localhost merujuk pada komputer tempat server berjalan dan 12345 adalah nomor port yang dipilih untuk server. Dengan server_socket.listen(5), server diinstruksikan untuk mendengarkan koneksi masuk. Argumen 5 menunjukkan bahwa server akan menerima hingga lima koneksi masuk yang tertunda. Pesan "Server telah siap menerima koneksi..." dicetak untuk memberi tahu operator server bahwa server telah dimulai dan siap menerima koneksi. Dengan langkah-langkah ini, server siap untuk menerima koneksi dari klien dan menanggapi pesan yang diterima.
 ```sh
@@ -54,3 +52,5 @@ if __name__ == "__main__":
     main()
 ```
 ## Output
+
+2. Membuat sebuah program klien yang dapat terhubung ke server yang telah dibuat pada soal nomor 1. Klien ini akan mengirimkan pesan ke server berupa inputan dari pengguna dan menampilkan pesan balasan jumlah karakter yang diterima dari server. Membuat analisa dari hasil program tersebut
