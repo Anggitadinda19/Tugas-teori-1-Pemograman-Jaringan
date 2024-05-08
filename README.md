@@ -53,6 +53,46 @@ if __name__ == "__main__":
 ```
 ## Output
 Server
-![reference image](/images/Output Server no1.png)
+![reference image](/images/2.png)
+
+Client
+![reference image](/images/1.png)
 
 2. Membuat sebuah program klien yang dapat terhubung ke server yang telah dibuat pada soal nomor 1. Klien ini akan mengirimkan pesan ke server berupa inputan dari pengguna dan menampilkan pesan balasan jumlah karakter yang diterima dari server. Membuat analisa dari hasil program tersebut
+
+** Source Code **
+
+Kode tersebut merupakan implementasi program klien dalam bahasa Python yang menggunakan modul socket untuk berkomunikasi dengan server menggunakan protokol TCP/IP. Program klien ini terhubung ke server yang berjalan pada alamat localhost dan port 12345. Pengguna diminta untuk memasukkan pesan yang akan dikirimkan ke server. Setelah pesan dimasukkan, klien mengirimkan pesan tersebut ke server menggunakan metode send() setelah diencode menjadi format byte menggunakan encode(). Selanjutnya, klien menerima balasan dari server menggunakan metode recv() dengan ukuran buffer 1024 byte, lalu dekode pesan yang diterima menjadi string menggunakan decode(). Balasan tersebut adalah jumlah karakter dari pesan yang telah dihitung oleh server. Klien kemudian mencetak jumlah karakter yang diterima dari server. Akhirnya, koneksi dengan server ditutup menggunakan close() untuk membersihkan sumber daya. Program klien ini memberikan interaksi antara pengguna dengan server yang sederhana, di mana pesan yang dikirimkan oleh pengguna akan dihitung jumlah karakternya oleh server, dan jumlah karakter tersebut akan ditampilkan kembali kepada pengguna.
+```sh
+import socket
+
+def main():
+    # Inisialisasi socket TCP/IP
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    # Hubungkan ke server
+    client_socket.connect(('localhost', 12345))
+
+    # Input pesan dari pengguna
+    message = input("Masukkan pesan: ")
+
+    # Kirim pesan ke server
+    client_socket.send(message.encode())
+
+    # Terima balasan dari server
+    response = client_socket.recv(1024).decode()
+    print(f"Jumlah karakter yang diterima dari server: {response}")
+
+    # Tutup koneksi dengan server
+    client_socket.close()
+
+if __name__ == "__main__":
+    main()
+```
+## Output
+
+Server
+![reference image](/images/3.png)
+
+Client
+![reference image](/images/4.png)
