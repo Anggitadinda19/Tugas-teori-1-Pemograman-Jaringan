@@ -52,5 +52,7 @@ if __name__ == "__main__":
     main()
 ```
 ## Output
+Server
+![reference image](/images/5.png)
 
 2. Membuat sebuah program klien yang dapat terhubung ke server yang telah dibuat pada soal nomor 1. Klien ini akan mengirimkan pesan ke server berupa inputan dari pengguna dan menampilkan pesan balasan jumlah karakter yang diterima dari server. Membuat analisa dari hasil program tersebut
