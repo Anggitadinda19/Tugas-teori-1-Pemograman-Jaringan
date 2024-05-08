@@ -70,7 +70,7 @@ Client
 ## Soal 2
 Membuat sebuah program klien yang dapat terhubung ke server yang telah dibuat pada soal nomor 1. Klien ini akan mengirimkan pesan ke server berupa inputan dari pengguna dan menampilkan pesan balasan jumlah karakter yang diterima dari server. Membuat analisa dari hasil program tersebut
 
-** Source Code **
+**Source Code:**
 
 Kode tersebut merupakan implementasi program klien dalam bahasa Python yang menggunakan modul socket untuk berkomunikasi dengan server menggunakan protokol TCP/IP. Program klien ini terhubung ke server yang berjalan pada alamat localhost dan port 12345. Pengguna diminta untuk memasukkan pesan yang akan dikirimkan ke server. Setelah pesan dimasukkan, klien mengirimkan pesan tersebut ke server menggunakan metode send() setelah diencode menjadi format byte menggunakan encode().
 
