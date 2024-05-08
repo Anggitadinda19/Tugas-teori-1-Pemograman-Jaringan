@@ -1,40 +1,56 @@
 # Tugas-teori-1-Pemograman-Jaringan
 
-1. 
-   A. Server.py
-  - Import Library: Mengimpor modul socket untuk menggunakan fungsi-fungsi socket dalam Python.
-  - Fungsi hitung_jumlah_karakter: Fungsi ini menerima sebuah string dan mengembalikan jumlah karakternya dalam bentuk string.
-  - Inisialisasi Socket Server: Membuat socket server menggunakan socket.socket() dengan parameter socket.AF_INET untuk menentukan domain     alamat (IPv4) dan socket.SOCK_STREAM untuk menentukan jenis socket (TCP).
-  - Bind Socket: Mengikat (bind) socket ke alamat localhost dan port 12345 menggunakan metode bind().
-  - Listen for Connections: Memulai mendengarkan (listen) koneksi masuk dengan metode listen(). Parameter 5 menentukan jumlah maksimum        koneksi yang diterima oleh server.
-  - Loop untuk Menerima Koneksi: Server memasuki loop tak terbatas untuk terus menerima koneksi masuk dari client.
-  - Terima Koneksi: Ketika ada koneksi masuk, server menerima koneksi dan mendapatkan objek socket baru untuk berinteraksi dengan client.     Fungsi accept() akan mengembalikan objek socket client dan alamat client.
-  - Terima Pesan dari client: Server menerima pesan dari client menggunakan metode recv() dengan buffer size 1024. Pesan tersebut             kemudian di-decode dari byte menjadi string.
-  - Proses Pesan: Jika pesan diterima dari client, server akan menghitung jumlah karakter pesan menggunakan fungsi hitung_jumlah_karakter.
-  - Kirim Balasan: Server mengirim balasan berupa jumlah karakter pesan kembali ke client menggunakan metode send(). Sebelumnya, jumlah       karakter dikonversi menjadi string dan diencode ke dalam byte.
-  - Tutup Koneksi: Setelah mengirim balasan, koneksi dengan client ditutup menggunakan metode close().
-    
-  B. client.py
-  - Import Library: Mengimpor modul socket untuk menggunakan fungsi-fungsi socket dalam Python.
-  - Inisialisasi Socket client: Membuat socket client menggunakan socket.socket() dengan parameter socket.AF_INET untuk menentukan domain     alamat (IPv4) dan socket.SOCK_STREAM untuk menentukan jenis socket (TCP).
-  - Koneksi ke Server: client melakukan koneksi ke server dengan menggunakan metode connect() dengan alamat localhost dan port 12345.
-  - Mengirim Pesan ke Server: client meminta pengguna untuk memasukkan pesan yang akan dikirim ke server, kemudian pesan tersebut dikirim     menggunakan metode send(). Pesan tersebut diencode menjadi byte sebelum dikirim.
-  - Terima Balasan dari Server: client menerima balasan dari server menggunakan metode recv() dengan buffer size 1024. Balasan tersebut       kemudian di-decode dari byte menjadi string.
-  - Tampilkan Balasan: Balasan dari server, yaitu jumlah karakter pesan, ditampilkan ke pengguna.
-  - Tutup Koneksi: Setelah menerima balasan, koneksi dengan server ditutup menggunakan metode close().
-    
-2. 
-  A. Client.py
-  - Impor Modul Socket: Kode dimulai dengan mengimpor modul socket, yang merupakan modul bawaan Python yang menyediakan antarmuka untuk       fungsi socket.
-  - Fungsi Utama (main): Ini adalah titik masuk utama program. Di dalamnya, koneksi ke server dibuat, pesan dikirim, balasan diterima,        dan kemudian koneksi ditutup.
-  - Inisialisasi Socket Klien: Kode membuat objek socket klien dengan menggunakan socket.socket(socket.AF_INET, socket.SOCK_STREAM).
-  - AF_INET menandakan bahwa kita akan menggunakan alamat IP versi 4, sedangkan SOCK_STREAM menandakan bahwa ini akan menjadi koneksi TCP.
-  - Koneksi ke Server: Klien mencoba untuk terhubung ke server dengan memanggil client_socket.connect(server_address). server_address di      sini adalah tupel yang berisi alamat IP atau nama host server dan nomor port yang akan dikoneksikan (localhost dengan port 12345          dalam contoh ini).
-  - Input Pesan: Klien meminta pengguna untuk memasukkan pesan yang akan dikirim ke server dengan menggunakan input().
-  - Kirim Pesan ke Server: Pesan yang dimasukkan oleh pengguna dikirim ke server menggunakan client_socket.sendall(pesan.encode()). Pesan     dienkripsi terlebih dahulu ke dalam byte menggunakan encode() agar dapat dikirim melalui koneksi socket.
-  - Terima Balasan dari Server: Klien menerima balasan dari server dengan menggunakan client_socket.recv(1024). Angka 1024 menunjukkan        jumlah byte maksimum yang akan diterima dalam satu kali panggilan. Setelah menerima, balasan tersebut di-decode menjadi string            menggunakan decode().
-  - Tampilkan Balasan: Balasan dari server ditampilkan ke pengguna.
-  - Tutup Koneksi: Koneksi socket ditutup dengan menggunakan client_socket.close().
+Nama: Anggita Rachmadinda Putri
 
-  Penjelasan:
-  Kode tersebut menginisialisasi sebuah koneksi TCP/IP sebagai klien dengan menggunakan modul socket bawaan Python. Setelah menetapkan      koneksi dengan server yang dituju, klien meminta pengguna untuk memasukkan pesan yang akan dikirim. Pesan tersebut dikirim ke server      melalui koneksi socket, kemudian klien menunggu balasan dari server. Setelah menerima balasan dari server, klien mendekode pesan          tersebut dari byte menjadi string dan mencetaknya ke layar. Akhirnya, koneksi socket ditutup untuk membersihkan sumber daya. Dengan       demikian, klien ini berfungsi sebagai antarmuka pengguna sederhana yang memfasilitasi komunikasi dua arah antara pengguna dan server.
+Kelas: IF 02 - 01
+
+NIM: 1203220086
+
+## Soal
+1. Membuat sebuah program server yang dapat menerima koneksi dari klien menggunakan protokol TCP. Server ini akan menerima pesan dari klien dan mengirimkan pesan balasan berisi jumlah karakter pada pesan tersebut. Gunakan port 12345 untuk server. Membuat analisa dari hasil program tersebut 
+2. Membuat sebuah program klien yang dapat terhubung ke server yang telah dibuat pada soal nomor 1. Klien ini akan mengirimkan pesan ke server berupa inputan dari pengguna dan menampilkan pesan balasan jumlah karakter yang diterima dari server. Membuat analisa dari hasil program tersebut
+3. upload di github dan kumpulkan url repositorinya
+
+## Source Code
+
+Bagian ini untuk menginisialisasi server menggunakan protokol TCP/IP. Pernyataan import socket mengimpor modul socket, yang menyediakan fungsi-fungsi untuk berkomunikasi melalui jaringan. Dengan menggunakan socket.socket(socket.AF_INET, socket.SOCK_STREAM), kita membuat objek socket yang menggunakan alamat IPv4 (socket.AF_INET) dan protokol TCP (socket.SOCK_STREAM). Langkah selanjutnya adalah mengikat socket ke alamat dan port tertentu menggunakan server_socket.bind(('localhost', 12345)). Di sini, localhost merujuk pada komputer tempat server berjalan dan 12345 adalah nomor port yang dipilih untuk server. Dengan server_socket.listen(5), server diinstruksikan untuk mendengarkan koneksi masuk. Argumen 5 menunjukkan bahwa server akan menerima hingga lima koneksi masuk yang tertunda. Pesan "Server telah siap menerima koneksi..." dicetak untuk memberi tahu operator server bahwa server telah dimulai dan siap menerima koneksi. Dengan langkah-langkah ini, server siap untuk menerima koneksi dari klien dan menanggapi pesan yang diterima.
+```sh
+import socket
+
+def main():
+    # Inisialisasi socket TCP/IP
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    # Bind socket ke alamat dan port tertentu
+    server_socket.bind(('localhost', 12345))
+
+    # Listen untuk koneksi masuk
+    server_socket.listen(5)
+
+    print("Server telah siap menerima koneksi...")
+```
+
+Bagian ini untuk menjalankan server dalam loop tak terbatas (while True). Setiap iterasi dari loop ini, server akan menunggu dan menerima koneksi dari klien yang ingin berkomunikasi. Ketika koneksi diterima, server akan mencetak pesan yang memberitahu bahwa koneksi berhasil dibuat dengan klien dan mencantumkan alamat IP dan nomor port klien. Setelah koneksi terbentuk, server akan menerima pesan dari klien menggunakan metode recv() dengan ukuran buffer 1024 byte. Pesan yang diterima akan di-decode dari format byte menjadi string dan kemudian dicetak untuk keperluan pemantauan dan debugging. Selanjutnya, server akan menghitung jumlah karakter dalam pesan yang diterima menggunakan fungsi len(). Setelah jumlah karakter pesan dihitung, server akan mengirimkan balasan kepada klien. Balasan ini berisi jumlah karakter pesan yang telah dihitung, yang dikonversi menjadi string, kemudian diencode menjadi format byte menggunakan metode encode() sebelum dikirimkan ke klien. Setelah server mengirim balasan, koneksi dengan klien ditutup menggunakan metode close() untuk membersihkan sumber daya dan membebaskan port untuk koneksi berikutnya. Proses ini akan berulang terus-menerus, memungkinkan server untuk terus menerima koneksi dan menanggapi pesan dari klien.
+```sh
+    while True:
+        # Terima koneksi dari klien
+        client_socket, client_address = server_socket.accept()
+        print(f"Terhubung dengan {client_address}")
+        
+        # Terima pesan dari klien
+        message = client_socket.recv(1024).decode()
+        print(f"Pesan dari klien: {message}")
+        
+        # Hitung jumlah karakter pesan
+        num_chars = len(message)
+        
+        # Kirim balasan berupa jumlah karakter ke klien
+        client_socket.send(str(num_chars).encode())
+        
+        # Tutup koneksi dengan klien
+        client_socket.close()
+
+if __name__ == "__main__":
+    main()
+```
+## Output
